@@ -14,19 +14,131 @@
   <body>
     <h1>Customize Your Pizza</h1>
         <div id="MenuA">
-            <div class="container border border-dark">
-                <div class="size-menu">
-                <h3>SIZE</h3>
-                    <div class="size">
-                            <input class="size-input" type="radio" value="" id="personal">
-                            <label class="form-check-label" for="personal">Personal
-                            </label>
-                    </div> 
+             
+            <form id="frmMenu">
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                    <h2>Size</h2>
+                        <div class="sizemenu">
+                            <input class="size" type="radio" name="size" value="Personal Pizza">Personal ($6)<br>
+                        </div>
+                        <div class="sizemenu">
+                                <input class="size" type="radio" name="size" value="Medium Pizza"checked>Medium ($10)<br>     
+                        </div>
+                        <div class="sizemenu">
+                                <input class="size" type="radio" name="size" value="Large Pizza">Large ($14)<br>
+                        </div>
+                        <div class="sizemenu">
+                                <input class="size" type="radio" name="size" value="Extra Large Pizza">Extra Large ($16)<br>                               
+                        </div> 
+                </div> 
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                    <h2>Meat Topping</h2>
+                    <h3>($1 each. First one free.)</h3>
+                        <div class="meatmenu">
+                            <input class="meat" type="checkbox" name="meat" value="Pepperoni">Pepperoni<br>
+                        </div>
+                        <div class="meatmenu">
+                                <input class="meat" type="checkbox" name="meat" value="Sausage">Sausage<br>     
+                        </div>
+                        <div class="meatmenu">
+                                <input class="meat" type="checkbox" name="meat" value="Canadian Bacon">Canadian Bacon<br>
+                        </div>
+                        <div class="meatmenu">
+                                <input class="meat" type="checkbox" name="meat" value="Ground Beef">Ground Beef<br>                               
+                        </div>
+                        <div class="meatmenu">
+                                <input class="meat" type="checkbox" name="meat" value="Anchovy">Anchovy<br>                               
+                        </div> 
+                        <div class="meatmenu">
+                                <input class="meat" type="checkbox" name="meat" value="Chicken">Chicken<br>                               
+                        </div>      
+                </div>         
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                    <h2>Cheese</h2>
+                        <div class="cheesemenu">
+                            <input class="cheese" type="radio" name="cheese" value="Regular"checked>Regular<br>
+                        </div>
+                        <div class="cheesemenu">
+                                <input class="cheese" type="radio" name="cheese" value="No Cheese">No Cheese<br>     
+                        </div>
+                        <div class="cheesemenu">
+                                <input class="cheese" type="radio" name="cheese" value="Extra Cheese">Extra Cheese (+ $3)<br>
+                        </div> 
                 </div>
-            </div>
-        </div>    
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                    <h2>Crust</h2>
+                        <div class="crustmenu">
+                            <input class="crust" type="radio" name="crust" value="Plain"checked>Plain Crust<br>
+                        </div>
+                        <div class="crustmenu">
+                                <input class="crust" type="radio" name="crust" value="Garlic Butter">Garlic Buttercrust<br>     
+                        </div>
+                        <div class="crustmenu">
+                                <input class="crust" type="radio" name="crust" value="Cheese Stuffed Crust">Cheese Stuffed Crust (+ $3)<br>
+                        </div>
+                        <div class="crustmenu">
+                                <input class="crust" type="radio" name="crust" value="Spicy Crust">Spicy Crust<br>                               
+                        </div>
+                        <div class="crustmenu">
+                                <input class="crust" type="radio" name="crust" value="House Special Crust">House Special Crust<br>                               
+                        </div>
+                </div>
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                    <h2>Sauce</h2>
+                        <div class="saucemenu">
+                            <input class="sauce" type="radio" name="sauce" value="Marinara Sauce"checked>Marinara Sauce<br>
+                        </div>
+                        <div class="crustmenu">
+                                <input class="sauce" type="radio" name="sauce" value="White Sauce">White Sauce<br>     
+                        </div>
+                        <div class="crustmenu">
+                                <input class="sauce" type="radio" name="sauce" value="Barbeque Sauce">Barbeque Sauce<br>
+                        </div>
+                        <div class="crustmenu">
+                                <input class="sauce" type="radio" name="sauce" value="No Sauce">No Sauce<br>                               
+                        </div> 
+                </div> 
+                <div class="container border border-dark col-md-6 col-lg-3 col-xs-12">
+                        <h2>Veggies</h2>
+                        <h3>($1 each. First one free.)</h3>
+                            <div class="veggiesmenu">
+                                <input class="veggies" type="checkbox" name="veggies" value="Tomatoes">Tomatoes<br>
+                            </div>
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Onions">Onions<br>     
+                            </div>
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Olives">Olives<br>
+                            </div>
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Green Peppers">Green Peppers<br>                               
+                            </div>
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Mushrooms">Mushrooms<br>                               
+                            </div> 
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Pineapple">Pineapple<br>                               
+                            </div> 
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Spinach">Spinach<br>                               
+                            </div> 
+                            <div class="veggiemenu">
+                                    <input class="veggies" type="checkbox" name="veggies" value="Jalapenos">Jalapenos<br>                               
+                            </div>      
+                </div> 
+                <div class="showcart container border border-dark col-md-6 col-lg-3 col-xs-12"
+                            <div id="cart">
+                                <div id="showText"></div>
+                                <div id="totalPrice"></div>
+                            </div> 
+                </div>                 
+                        
+            </form>
 
-  </body>
+
+        <input id="orderbtn" type="button" onclick="getReceipt()" value="Place Order">      
+        <script src="./js/pizza_drill.js"></script>       
+</body>
    
 
     <!-- Optional JavaScript -->

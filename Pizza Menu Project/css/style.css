@@ -17,5 +17,30 @@ h1 {
 }
 
 .container {
-    
+    text-align: left;
+    padding: 10px 25px;
+    border-radius: 10px; 
 }
+
+#orderbtn {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+}
+h2 {
+    font-size: 19px;
+    text-shadow: 1px 0px red;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 12px;
+    /**text-shadow: 1px 0px #279927;*//
+    font-weight: normal;
+}
+
+.showcart {
+    background-color: #e8dcdc;
+     
+}
+
