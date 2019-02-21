@@ -19,7 +19,7 @@ function getReceipt() {
 		sizeTotal = 16;
 	}
 	runningTotal = sizeTotal;
-
+    
 	getMeat(runningTotal,text1); 
 };
 
@@ -45,8 +45,74 @@ function getMeat(runningTotal,text1) {
     document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
     
 
-    getVeggies(runningTotal,text1);
-};		
+    getCheese(runningTotal,text1);
+
+};	
+
+function getCheese(runningTotal,text1) {
+	var cheeseTotal = 0;
+	var cheeseArray = document.getElementsByClassName("cheese");
+	for (var k = 0; k < cheeseArray.length; k++) {
+		if (cheeseArray[k].checked) {
+			var selectedCheese = cheeseArray[k].value;
+			text1 = text1+selectedCheese+"<br>";
+		}
+	}
+	if (selectedCheese === "Extra Cheese") {
+		cheeseTotal = 3;
+	} else {
+		cheeseTotal = 0;
+	}
+	runningTotal = (runningTotal + cheeseTotal);
+
+	document.getElementById("showText").innerHTML=text1;
+    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
+
+	getCrust(runningTotal,text1); 
+};
+
+function getCrust(runningTotal,text1) {
+	var crustTotal = 0;
+	var crustArray = document.getElementsByClassName("crust");
+	for (var l = 0; l < crustArray.length; l++) {
+		if (crustArray[l].checked) {
+			var selectedCrust = crustArray[l].value;
+			text1 = text1+selectedCrust+"<br>";
+		}
+	}
+	if (selectedCrust === "Cheese Stuffed Crust") {
+		crustTotal = 3;
+	} else {
+		crustTotal = 0;
+	}
+	runningTotal = (runningTotal + crustTotal);
+
+	document.getElementById("showText").innerHTML=text1;
+    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
+
+	getSauce(runningTotal,text1); 
+};
+
+function getSauce(runningTotal,text1) {
+	var sauceTotal = 0;
+	var sauceArray = document.getElementsByClassName("sauce");
+	for (var m = 0; m < sauceArray.length; m++) {
+		if (sauceArray[m].checked) {
+			var selectedSauce = sauceArray[m].value;
+			text1 = text1+selectedSauce+"<br>";
+		}
+	}
+
+	runningTotal = (runningTotal + sauceTotal);
+
+	document.getElementById("showText").innerHTML=text1;
+    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
+
+	getVeggies(runningTotal,text1); 
+};
 
 function getVeggies(runningTotal,text1) {
 	var veggiesTotal = 0;
@@ -70,25 +136,3 @@ function getVeggies(runningTotal,text1) {
     document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
 }; 
 
-/*function getCheese(runningTotal,text1) {
-	var cheeseTotal = 0;
-	var cheeseArray = document.getElementsByClassName("cheese");
-	for (var k = 0; k < cheeseArray.length; k++) {
-		if (sizeArray[k].checked) {
-			var selectedCheese = cheeseArray[k].value;
-			text1 = text1+selectedCheese+"<br>";
-		}
-	}
-	if (selectedCheese === "Extra Cheese") {
-		cheeseTotal = 3;
-	} else {
-		cheeseTotal = 0;
-	}
-	runningTotal = (runningTotal + cheeseTotal);
-
-	document.getElementById("showText").innerHTML=text1;
-    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    
-
-	getCrust(runningTotal,text1); 
-};*/
