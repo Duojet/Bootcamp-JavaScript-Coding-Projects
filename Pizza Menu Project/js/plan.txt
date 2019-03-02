@@ -1,0 +1,15 @@
+Array of objects
+Each object has:
+  type: (sauce, veggies, meat, size...)
+  Name: (eg: veggies can be "tomatoes", "Onions", ...)
+  Price: (number)
+
+
+When the user selects "Place ORder", we'll build up the array based on what's selected.
+[
+    { "type": "veggie", "name": "tomatoes", "price": 1},
+    { "type": "veggie", "name": "onions", "price": 1}
+]
+
+for each element in the array:
+  print name and price

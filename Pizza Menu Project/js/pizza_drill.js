@@ -1,14 +1,46 @@
 function getReceipt() {
-	var text1 = "<h4>You Ordered:</h4>";
+	var orderText = "<h4>You Ordered:</h4>";
 	var runningTotal = 0;
-	var sizeTotal = 0;
+	
+	var itemsAndPrices = [];
+	var sizeItem = getSizeItem();
+	itemsAndPrices.push(sizeItem);
+	var meatItems = getMeatItems();
+	itemsAndPrices = itemsAndPrices.concat(meatItems);
+	var cheeseItem = getCheeseItem();
+	itemsAndPrices.push(cheeseItem);
+	var crustItem = getCrustItem();
+	itemsAndPrices.push(crustItem);
+	var sauceItem = getSauceItem();
+	itemsAndPrices.push(sauceItem);
+	var veggieItems = getVeggieItems();
+	itemsAndPrices = itemsAndPrices.concat(veggieItems);
+	console.log(itemsAndPrices);
+
+	orderText = orderText + "<table>";
+	orderText = orderText + "<tr><th>Item</th><th>Price</th></tr>";
+	for (var i = 0; i < itemsAndPrices.length; i++) {
+		orderText = orderText + "<tr>";
+		currentItem = itemsAndPrices[i];
+		orderText = orderText + "<td>" + currentItem.name +  "</td><td align=right>$" + currentItem.price + ".00</td>";
+		runningTotal += currentItem.price;
+		orderText = orderText + "</tr>";
+	}
+	orderText = orderText + "<tr><th>TOTAL:</th><th align=right>$" + runningTotal + ".00</th></tr>";
+	orderText = orderText + "</table>";
+	document.getElementById("showText").innerHTML = orderText;
+    // document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$" + runningTotal + ".00" + "</strong></h3>";
+};
+
+function getSizeItem() {
 	var sizeArray = document.getElementsByClassName("size");
 	for (var i = 0; i < sizeArray.length; i++) {
 		if (sizeArray[i].checked) {
 			var selectedSize = sizeArray[i].value;
-			text1 = text1+selectedSize+"<br>";
 		}
 	}
+
+	var sizeTotal;
 	if (selectedSize === "Personal Pizza") {
 		sizeTotal = 6;
 	} else if (selectedSize === "Medium Pizza") {
@@ -18,81 +50,89 @@ function getReceipt() {
 	} else if (selectedSize === "Extra Large Pizza") {
 		sizeTotal = 16;
 	}
-	runningTotal = sizeTotal;
-    
-	getMeat(runningTotal,text1); 
-};
 
-function getMeat(runningTotal,text1) {
-	var meatTotal = 0;
-	var selectedMeat = [];
+	return { "type": "size", "name": selectedSize, "price": sizeTotal};
+}
+
+function getMeatItems() {
+	var selectedItems = [];
 	var meatArray = document.getElementsByClassName("meat");
-	for (var j = 0; j < meatArray.length; j++) {
-		if (meatArray[j].checked) {
-			selectedMeat.push(meatArray[j].value);
-			text1 = text1+meatArray[j].value+"<br>";
+	for (var i = 0; i < meatArray.length; i++) {
+		if (meatArray[i].checked) {
+			var currentItemName = meatArray[i].value;
+			var currentItemPrice = 0;
+			if (selectedItems.length > 0) {
+				currentItemPrice = 1;
+			}
+			var currentItem = { "type": "meat", "name": currentItemName, "price": currentItemPrice};
+			selectedItems.push(currentItem);
 		}
 	}
-	var meatCount = selectedMeat.length;
-	if (meatCount > 1) {
-		meatTotal = (meatCount - 1);
-	} else {
-		meatTotal = 0;
-	}
-	runningTotal = (runningTotal + meatTotal);
-
-	document.getElementById("showText").innerHTML=text1;
-    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    
-
-    getCheese(runningTotal,text1);
-
+	return selectedItems;
 };	
 
-function getCheese(runningTotal,text1) {
-	var cheeseTotal = 0;
-	var cheeseArray = document.getElementsByClassName("cheese");
-	for (var k = 0; k < cheeseArray.length; k++) {
-		if (cheeseArray[k].checked) {
-			var selectedCheese = cheeseArray[k].value;
-			text1 = text1+selectedCheese+"<br>";
+function getCheeseItem() {
+	var selectedItem;
+	var items = document.getElementsByClassName("cheese");
+	for (var i = 0; i < items.length; i++) {
+		if (items[i].checked) {
+			var currentItemName = items[i].value;
+			var currentItemPrice = 0;
+			if (currentItemName === "Extra Cheese") {
+				currentItemPrice = 3;
+			}
+			selectedItem = { "type": "cheese", "name": currentItemName, "price": currentItemPrice};
 		}
 	}
-	if (selectedCheese === "Extra Cheese") {
-		cheeseTotal = 3;
-	} else {
-		cheeseTotal = 0;
-	}
-	runningTotal = (runningTotal + cheeseTotal);
-
-	document.getElementById("showText").innerHTML=text1;
-    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    
-
-	getCrust(runningTotal,text1); 
+	return selectedItem;
 };
 
-function getCrust(runningTotal,text1) {
-	var crustTotal = 0;
-	var crustArray = document.getElementsByClassName("crust");
-	for (var l = 0; l < crustArray.length; l++) {
-		if (crustArray[l].checked) {
-			var selectedCrust = crustArray[l].value;
-			text1 = text1+selectedCrust+"<br>";
+function getCrustItem() {
+	var selectedItem;
+	var items = document.getElementsByClassName("crust");
+	for (var i = 0; i < items.length; i++) {
+		if (items[i].checked) {
+			var currentItemName = items[i].value;
+			var currentItemPrice = 0;
+			if (currentItemName === "Cheese Stuffed Crust") {
+				currentItemPrice = 3;
+			}
+			selectedItem = { "type": "crust", "name": currentItemName, "price": currentItemPrice};
 		}
 	}
-	if (selectedCrust === "Cheese Stuffed Crust") {
-		crustTotal = 3;
-	} else {
-		crustTotal = 0;
+	return selectedItem;
+};
+
+function getSauceItem() {
+	var selectedItem;
+	var items = document.getElementsByClassName("sauce");
+	for (var i = 0; i < items.length; i++) {
+		if (items[i].checked) {
+			var currentItemName = items[i].value;
+			var currentItemPrice = 0;
+			selectedItem = { "type": "sauce", "name": currentItemName, "price": currentItemPrice};
+		}
 	}
-	runningTotal = (runningTotal + crustTotal);
+	return selectedItem;
+};
 
-	document.getElementById("showText").innerHTML=text1;
-    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    
 
-	getSauce(runningTotal,text1); 
+
+function getVeggieItems() {
+	var selectedItems = [];
+	var items = document.getElementsByClassName("veggies");
+	for (var i = 0; i < items.length; i++) {
+		if (items[i].checked) {
+			var currentItemName = items[i].value;
+			var currentItemPrice = 0;
+			if (selectedItems.length > 0) {
+				currentItemPrice = 1;
+			}
+			var currentItem = { "type": "veggies", "name": currentItemName, "price": currentItemPrice};
+			selectedItems.push(currentItem);
+		}
+	}
+	return selectedItems;
 };
 
 function getSauce(runningTotal,text1) {
@@ -106,10 +146,6 @@ function getSauce(runningTotal,text1) {
 	}
 
 	runningTotal = (runningTotal + sauceTotal);
-
-	document.getElementById("showText").innerHTML=text1;
-    document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    
 
 	getVeggies(runningTotal,text1); 
 };
