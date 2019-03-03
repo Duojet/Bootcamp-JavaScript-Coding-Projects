@@ -2,6 +2,12 @@ function getReceipt() {
 	var orderText = "<h4>You Ordered:</h4>";
 	var runningTotal = 0;
 	
+	
+	// We'll build up the itemsAndPrices array first, by calling each of the functions in turn.
+	// Each function returns all selected objects of that type. If the HTML element only allows a single item
+	// to be selected, the function returns a single object. If the HTM?L element allows multiple items to be selected,
+	// the function returns an array of objects.
+	// Each object has a type, name, and price. Example: { "type": "veggie", "name": "onions", "price": 1}
 	var itemsAndPrices = [];
 	var sizeItem = getSizeItem();
 	itemsAndPrices.push(sizeItem);
@@ -15,22 +21,40 @@ function getReceipt() {
 	itemsAndPrices.push(sauceItem);
 	var veggieItems = getVeggieItems();
 	itemsAndPrices = itemsAndPrices.concat(veggieItems);
+	// This is a super-handy Javascript debugging technique. In Firefox, you can choose Tools..Web Developer..Web Console
+	// To see this output. The Web Console is an indespensible tool for building front-end apps; front-end devs
+	// use this all the time.
 	console.log(itemsAndPrices);
 
+
+	// At this point, we have all the order items from the HTML form in the itemsAndPrices array.
+	// In this next section, we use the itemsAndPrices array to build up the order text in the orderText variable.
 	orderText = orderText + "<table>";
 	orderText = orderText + "<tr><th>Item</th><th>Price</th></tr>";
 	for (var i = 0; i < itemsAndPrices.length; i++) {
 		orderText = orderText + "<tr>";
 		currentItem = itemsAndPrices[i];
+		// currentItem is an object with type, name, and price; so we can do, for example, currentItem.name.
 		orderText = orderText + "<td>" + currentItem.name +  "</td><td align=right>$" + currentItem.price + ".00</td>";
 		runningTotal += currentItem.price;
 		orderText = orderText + "</tr>";
 	}
 	orderText = orderText + "<tr><th>TOTAL:</th><th align=right>$" + runningTotal + ".00</th></tr>";
 	orderText = orderText + "</table>";
+
+
+	// Finally, now that we have the orderText variable built up, put it on the HTML document's showText element.
 	document.getElementById("showText").innerHTML = orderText;
-    // document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$" + runningTotal + ".00" + "</strong></h3>";
 };
+
+///////////////////////
+// Function definitions
+// Below we define each of the functions we called in getReceipt()
+// For functions, note that they do nothing until they are called.
+// By convention, I have named the function ending in plural ("Items") if it returns an array,
+// or singular ("Item") if it returns a single object.
+// Each object has a type, name, and price. Example: { "type": "veggie", "name": "onions", "price": 1}
+///////////////////////
 
 function getSizeItem() {
 	var sizeArray = document.getElementsByClassName("size");
