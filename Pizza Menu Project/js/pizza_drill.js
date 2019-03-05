@@ -5,7 +5,7 @@ function getReceipt() {
 	
 	// We'll build up the itemsAndPrices array first, by calling each of the functions in turn.
 	// Each function returns all selected objects of that type. If the HTML element only allows a single item
-	// to be selected, the function returns a single object. If the HTM?L element allows multiple items to be selected,
+	// to be selected, the function returns a single object. If the HTML element allows multiple items to be selected,
 	// the function returns an array of objects.
 	// Each object has a type, name, and price. Example: { "type": "veggie", "name": "onions", "price": 1}
 	var itemsAndPrices = [];
